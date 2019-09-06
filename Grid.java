@@ -1,4 +1,4 @@
-package display;
+package logic;
 import java.util.ArrayList;
 
 public class Grid {
@@ -63,29 +63,20 @@ public class Grid {
 	 */
 	public static void initAlive() {
 		
-		// Simple Glider
-		/*
-		population.get(5).get(5).setAlive(true);
-		population.get(6).get(6).setAlive(true);
-		population.get(7).get(4).setAlive(true);
-		population.get(7).get(5).setAlive(true);
-		population.get(7).get(6).setAlive(true);
-		*/
-		
 		// Paul Callahan's 5x5 infinite growth
-		population.get(15).get(15).setAlive(true);
-		population.get(15).get(16).setAlive(true);
-		population.get(15).get(17).setAlive(true);
-		population.get(15).get(19).setAlive(true);
-		population.get(16).get(15).setAlive(true);
-		population.get(17).get(18).setAlive(true);
-		population.get(17).get(19).setAlive(true);
-		population.get(18).get(16).setAlive(true);
-		population.get(18).get(17).setAlive(true);
-		population.get(18).get(19).setAlive(true);
-		population.get(19).get(15).setAlive(true);
-		population.get(19).get(17).setAlive(true);
-		population.get(19).get(19).setAlive(true);
+		population.get(25).get(15).setAlive(true);
+		population.get(25).get(16).setAlive(true);
+		population.get(25).get(17).setAlive(true);
+		population.get(25).get(19).setAlive(true);
+		population.get(26).get(15).setAlive(true);
+		population.get(27).get(18).setAlive(true);
+		population.get(27).get(19).setAlive(true);
+		population.get(28).get(16).setAlive(true);
+		population.get(28).get(17).setAlive(true);
+		population.get(28).get(19).setAlive(true);
+		population.get(29).get(15).setAlive(true);
+		population.get(29).get(17).setAlive(true);
+		population.get(29).get(19).setAlive(true);
 	}
 	
 }

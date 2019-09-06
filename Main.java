@@ -1,4 +1,6 @@
-package display;
+package logic;
+
+import display.Display;
 
 public class Main {
 	

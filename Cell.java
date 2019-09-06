@@ -1,11 +1,10 @@
-package display;
+package logic;
 import java.util.ArrayList;
 
 public class Cell {
 	
 	private boolean alive = false;
 	private boolean aliveNextGen = false;
-	private static int generation = 0;
 	private int x;
 	private int y;
 	
@@ -23,18 +22,17 @@ public class Cell {
 	 * @return the y
 	 */
 	public int getY() { return y; }
-	
-	/**
-	 * @return the generation
-	 */
-	public static int getGeneration() { return generation; }
 
-	
 	/**
 	 * 
 	 * @return whether or not cell is alive next generation
 	 */
 	public boolean isAliveNextGen() { return aliveNextGen; }
+
+	/**
+	 * @param aliveNextGen the aliveNextGen to set
+	 */
+	public void setAliveNextGen(boolean aliveNextGen) { this.aliveNextGen = aliveNextGen; }
 	
 
 	/**
@@ -62,9 +60,7 @@ public class Cell {
 		// After all aliveNextGen values have been calculated, update all alive statuses at once
 		for (ArrayList<Cell> row : population)
 			for (Cell cell : row)
-				// Only update alive statuses for those that changed to avoid performing an additional step
-				if (cell.isAlive() != cell.isAliveNextGen())
-					cell.setAlive(cell.aliveNextGen);
+				cell.setAlive(cell.aliveNextGen);
 	}
 	
 	/**
@@ -103,17 +99,17 @@ public class Cell {
 		
 		// Determine if the number of surrounding cells allows the cell to be alive
 		if (!alive && nearbyAliveCells == 3) // New birth
-			return (aliveNextGen = true);
+			return true;
 		
 		if (alive == true && nearbyAliveCells < 2) // Death by isolation
-			return (aliveNextGen = false);
+			return false;
 		
 		if (alive == true && nearbyAliveCells > 3) // Death by overcrowding
-			return (aliveNextGen = false);
+			return false;
 			
 		if (alive == true && (nearbyAliveCells == 2 || nearbyAliveCells == 3)) // Survival
-			return (aliveNextGen = true);
+			return true;
 		
-		else return (aliveNextGen = false);
+		else return false;
 	}
 }
