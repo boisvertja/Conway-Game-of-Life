@@ -1,4 +1,5 @@
 package display;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -17,14 +18,17 @@ public class Display implements KeyListener, MouseListener {
 	public static final int WIDTH = 517;
 	public static final int HEIGHT = 540;
 	private static JFrame frame;
-	private static Simulation simMenu;
+	private static Simulation sim;
+	private static Menu menu;
 	
 	public Display() {
 		frame = new JFrame();
-		simMenu = new Simulation();
+		sim = new Simulation();
+		menu = new Menu();
 		
 		frame.setBackground(Color.BLACK);
-		frame.getContentPane().add(simMenu);
+		frame.getContentPane().add(sim, BorderLayout.CENTER);
+		frame.getContentPane().add(menu, BorderLayout.PAGE_START);
 		frame.addKeyListener(this);
 		frame.addMouseListener(this);
 		frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -40,24 +44,8 @@ public class Display implements KeyListener, MouseListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		
-		// Play the simulation
-		if (e.getKeyCode() == KeyEvent.VK_P && Grid.getState() == Grid.STATE.PAUSE)
-			Grid.setState(Grid.STATE.PLAY);
-		
-		// Pause the simulation
-		else if (e.getKeyCode() == KeyEvent.VK_P && Grid.getState() == Grid.STATE.PLAY)
-			Grid.setState(Grid.STATE.PAUSE);
-		
-		// Reset the simulation
-		else if (e.getKeyCode() == KeyEvent.VK_R) {
-			Grid.setState(Grid.STATE.PAUSE);
-			Grid.getPopulation().clear();
-			Grid.initGrid();
-			Grid.initAlive();
-		}
-		
 		// Exit the application
-		else if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
 			System.exit(0);
 	}
 	
@@ -71,11 +59,10 @@ public class Display implements KeyListener, MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		// Change the 'aliveNextGen' value of the selected cell
 		int mouseX = e.getX() - 8;
-		int mouseY = e.getY() - 30;
+		int mouseY = e.getY() - 80;
 		
 		// Locate the cell whose pixel-position contains the mouse's click location - for now, loop through every cell
 		ArrayList<ArrayList<Cell>> population = Grid.getPopulation();
-		
 		for (ArrayList<Cell> row : population)
 			for (Cell cell : row) 
 				
@@ -84,8 +71,8 @@ public class Display implements KeyListener, MouseListener {
 					if (mouseY > cell.getY() * 10 && mouseY <= cell.getY() * 10 + 10)
 						 
 						// Make it so the user can alternate the cell's 'alive' attribute by repeatedly selecting it
-						if (cell.isAlive()) {
-							cell.setAlive(false);
+						if (cell.isAlive()) {							
+							cell.setAlive(false);	
 							cell.setAliveNextGen(false);
 						}
 						else {

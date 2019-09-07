@@ -5,6 +5,8 @@ public class Cell {
 	
 	private boolean alive = false;
 	private boolean aliveNextGen = false;
+	private static int generation = 0;
+	private static int numAlive = 0;
 	private int x;
 	private int y;
 	
@@ -48,10 +50,38 @@ public class Cell {
 	}
 	
 	/**
+	 * @return the numAlive
+	 */
+	public static int getNumAlive() {
+		return numAlive;
+	}
+
+	/**
+	 * @param numAlive the numAlive to set
+	 */
+	public static void setNumAlive(int numAlive) {
+		Cell.numAlive = numAlive;
+	}
+
+	/**
+	 * @return the generation
+	 */
+	public static int getGeneration() {
+		return generation;
+	}
+
+	/**
+	 * @param generation the generation to set
+	 */
+	public static void setGeneration(int generation) {
+		Cell.generation = generation;
+	}
+
+	/**
 	 * Update en masse the alive status of all the cells rather than while checking if nearby cells are alive. 
 	 * This will prevent incorrect alive status and shapes
 	 */
-	public static void updateGeneration() {
+	public static void updateGeneration() {		
 		ArrayList<ArrayList<Cell>> population = Grid.getPopulation();
 		for (ArrayList<Cell> row : population)
 			for (Cell cell : row)
@@ -61,6 +91,9 @@ public class Cell {
 		for (ArrayList<Cell> row : population)
 			for (Cell cell : row)
 				cell.setAlive(cell.aliveNextGen);
+		
+		// Increment the generation count
+		generation++;
 	}
 	
 	/**
@@ -86,7 +119,7 @@ public class Cell {
 				if (x == this.x && y == this.y) continue;
 				
 				// If the current cell is within one 'x' coordinate of the main cell...
-				if (x == this.x - 1 || x == this.x || x == this.x + 1)
+				if (x == this.x - 1 || x == this.x || x == this.x + 1) {
 					
 					// If the current cell is within one 'y' coordinate of the main cell...
 					if (y == this.y - 1 || y == this.y || y == this.y + 1)
@@ -94,6 +127,7 @@ public class Cell {
 						// If alive, found an alive surrounding cell
 						if (cell.isAlive())
 							nearbyAliveCells++;
+				}
 			}
 		}
 		

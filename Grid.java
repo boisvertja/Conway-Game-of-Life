@@ -62,21 +62,43 @@ public class Grid {
 	 * Declare an initial state of alive cells
 	 */
 	public static void initAlive() {
-		
-		// Paul Callahan's 5x5 infinite growth
-		population.get(25).get(15).setAlive(true);
-		population.get(25).get(16).setAlive(true);
-		population.get(25).get(17).setAlive(true);
-		population.get(25).get(19).setAlive(true);
-		population.get(26).get(15).setAlive(true);
-		population.get(27).get(18).setAlive(true);
-		population.get(27).get(19).setAlive(true);
-		population.get(28).get(16).setAlive(true);
-		population.get(28).get(17).setAlive(true);
-		population.get(28).get(19).setAlive(true);
-		population.get(29).get(15).setAlive(true);
-		population.get(29).get(17).setAlive(true);
-		population.get(29).get(19).setAlive(true);
+		// Gosper Glider Gun
+		population.get(2).get(30).setAlive(true);
+		population.get(3).get(28).setAlive(true);
+		population.get(3).get(30).setAlive(true);
+		population.get(4).get(18).setAlive(true);
+		population.get(4).get(19).setAlive(true);
+		population.get(4).get(26).setAlive(true);
+		population.get(4).get(27).setAlive(true);
+		population.get(4).get(40).setAlive(true);
+		population.get(4).get(41).setAlive(true);
+		population.get(5).get(17).setAlive(true);
+		population.get(5).get(21).setAlive(true);
+		population.get(5).get(26).setAlive(true);
+		population.get(5).get(27).setAlive(true);
+		population.get(5).get(40).setAlive(true);
+		population.get(5).get(41).setAlive(true);
+		population.get(6).get(6).setAlive(true);
+		population.get(6).get(7).setAlive(true);
+		population.get(6).get(16).setAlive(true);
+		population.get(6).get(22).setAlive(true);
+		population.get(6).get(26).setAlive(true);
+		population.get(6).get(27).setAlive(true);
+		population.get(7).get(6).setAlive(true);
+		population.get(7).get(7).setAlive(true);
+		population.get(7).get(16).setAlive(true);
+		population.get(7).get(20).setAlive(true);
+		population.get(7).get(22).setAlive(true);
+		population.get(7).get(23).setAlive(true);
+		population.get(7).get(28).setAlive(true);
+		population.get(7).get(30).setAlive(true);
+		population.get(8).get(16).setAlive(true);
+		population.get(8).get(22).setAlive(true);
+		population.get(8).get(30).setAlive(true);
+		population.get(9).get(17).setAlive(true);
+		population.get(9).get(21).setAlive(true);
+		population.get(10).get(18).setAlive(true);
+		population.get(10).get(19).setAlive(true);
 	}
 	
 }
