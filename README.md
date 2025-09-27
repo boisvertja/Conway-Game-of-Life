@@ -1,4 +1,4 @@
-# Conway-s-Game-of-Life
+# Conway's Game of Life
 Simulation of cellular automaton devised by mathematician John Conway in 1970.
 Evolution of cell population is determined by the initial state. Cell populations abide by the following 4 rules:
   1. Any live cell with fewer than 2 live neighbors dies, as if by 'underpopulation'
